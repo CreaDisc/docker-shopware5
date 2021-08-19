@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: shopware5-phpmyadmin
+  name: shopware5-phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: shopware5-phpmyadmin
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: shopware5-phpmyadmin
+    spec:
+      containers:
+        - env:
+            - name: PMA_HOST
+              value: shopware5_mysql
+          image: phpmyadmin/phpmyadmin:latest
+          name: shopware5-phpmyadmin
+          ports:
+            - containerPort: 80
+          resources: {}
+      restartPolicy: Always
+status: {}

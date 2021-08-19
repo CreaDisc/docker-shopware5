@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  MYSQL_ROOT_PASSWORD: root
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: shopware5-mysql-db-env
+  name: db-env

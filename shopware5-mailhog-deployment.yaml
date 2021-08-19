@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: shopware5-mailhog
+  name: shopware5-mailhog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: shopware5-mailhog
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: shopware5-mailhog
+    spec:
+      containers:
+        - image: mailhog/mailhog:latest
+          name: shopware5-mailhog
+          ports:
+            - containerPort: 8025
+          resources: {}
+      restartPolicy: Always
+status: {}

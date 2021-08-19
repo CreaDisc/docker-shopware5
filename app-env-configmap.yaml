@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  MYSQL_DATABASE: shopware
+  MYSQL_HOST: shopware_mysql
+  MYSQL_PASSWORD: shopware
+  MYSQL_USER: shopware
+  OXID_SHOP_DIR: /var/www/html/
+  OXID_SHOP_URL: http://sw.localhost
+  PS_APACHE_DOCROOT: /var/www/html/
+  PS_APACHE_SERVERADMIN: webmaster@proudcommerce.com
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: shopware5-mysql-app-env
+  name: app-env
