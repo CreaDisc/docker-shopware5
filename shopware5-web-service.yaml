@@ -9,10 +9,15 @@ metadata:
     io.kompose.service: shopware5-web
   name: shopware5-web
 spec:
+  type: NodePort
   ports:
     - name: "80"
       port: 80
       targetPort: 80
+    - name: "2222"
+      port: 2222
+      targetPort: 22
+      nodePort: 31122
   selector:
     io.kompose.service: shopware5-web
 status:

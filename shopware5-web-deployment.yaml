@@ -25,7 +25,9 @@ spec:
         io.kompose.service: shopware5-web
     spec:
       containers:
-        - env:
+        - name: shopware5-web
+          image: proudcommerce/docker-php72-apache-stretch
+          env:
             - name: MYSQL_DATABASE
               valueFrom:
                 configMapKeyRef:
@@ -65,9 +67,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: PS_APACHE_SERVERADMIN
-                  name: app-env 
-        - name: shopware5-web
-          image: proudcommerce/docker-php72-apache-stretch
+                  name: app-env
           ports:
             - containerPort: 80
           resources: {}
@@ -76,6 +76,16 @@ spec:
               name: shopware5-web-claim0
             - mountPath: /var/log/apache2/
               name: shopware5-web-claim1
+        - name: sftp
+          args:
+            - docker:$1$Fee8MGyh$pPX3wFp89lh1WmfFoe3ql/:e:::/www
+          image: atmoz/sftp
+          ports:
+            - containerPort: 22
+          resources: {}
+          volumeMounts:
+            - mountPath: /home/docker/www/
+              name: shopware5-web-claim0
       restartPolicy: Always
       volumes:
         - name: shopware5-web-claim0
