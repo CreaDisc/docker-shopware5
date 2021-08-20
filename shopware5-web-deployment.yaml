@@ -65,9 +65,9 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: PS_APACHE_SERVERADMIN
-                  name: app-env
+                  name: app-env 
+        - name: shopware5-web
           image: proudcommerce/docker-php72-apache-stretch
-          name: shopware5-web
           ports:
             - containerPort: 80
           resources: {}

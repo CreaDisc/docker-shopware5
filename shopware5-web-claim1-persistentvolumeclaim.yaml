@@ -8,7 +8,8 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: rc-block-retained
   resources:
     requests:
-      storage: 100Mi
+      storage: 20Gi # for logs
 status: {}

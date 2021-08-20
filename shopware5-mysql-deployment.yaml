@@ -72,6 +72,8 @@ spec:
                   key: PS_APACHE_SERVERADMIN
                   name: app-env
           image: mysql:5.7
+          args:
+            - "--ignore-db-dir=lost+found"
           name: shopware5-mysql
           ports:
             - containerPort: 3306
